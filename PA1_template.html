@@ -251,7 +251,9 @@ with(mean_steps_per_interval, plot(interval, mean_steps, type=&quot;l&quot;,
 
 <p>Number of rows with NA values: 2304  </p>
 
-<pre><code class="r">new_activity_data &lt;- merge(x = activity_data, y = mean_steps_per_interval,
+<pre><code class="r"># Use the mean_steps_interval data frame generated earlier to replace any
+# missing step values with the mean for that 5-minute interval
+new_activity_data &lt;- merge(x = activity_data, y = mean_steps_per_interval,
                            by = &quot;interval&quot;)
 new_activity_data$steps[is.na(new_activity_data$steps)] &lt;-
     new_activity_data$mean_steps[is.na(new_activity_data$steps)]

@@ -63,6 +63,8 @@ num_na_rows <- nrow(activity_data) - sum(complete.cases(activity_data))
 Number of rows with NA values: 2304  
 
 ```r
+# Use the mean_steps_interval data frame generated earlier to replace any
+# missing step values with the mean for that 5-minute interval
 new_activity_data <- merge(x = activity_data, y = mean_steps_per_interval,
                            by = "interval")
 new_activity_data$steps[is.na(new_activity_data$steps)] <-
