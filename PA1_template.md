@@ -27,7 +27,7 @@ hist(total_steps_per_day$steps, xlab = "Total Steps per Day",
      main = "Histogram of Total Steps per Day")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![plot of chunk mean_total_steps_per_day](figure/mean_total_steps_per_day-1.png) 
 
 ```r
 mean_steps_per_day <- mean(total_steps_per_day$steps)
@@ -47,7 +47,7 @@ with(mean_steps_per_interval, plot(interval, mean_steps, type="l",
                                    xlab = "5-Minute Time Interval"))
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![plot of chunk avg_daily_activity_pattern](figure/avg_daily_activity_pattern-1.png) 
 
 ```r
 max_steps_interval <-
@@ -75,7 +75,7 @@ hist(new_total_steps_per_day$steps,
      main = "Histogram of Total Steps per Day (with Imputed Missing Values)")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![plot of chunk mean_total_steps_per_day_imputed_values](figure/mean_total_steps_per_day_imputed_values-1.png) 
 
 ```r
 new_mean_steps_per_day <- mean(new_total_steps_per_day$steps)
@@ -110,7 +110,7 @@ xyplot(steps ~ interval | day_type, data = new_activity_data,
        layout=c(1,2), type = "l")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
+![plot of chunk weekend_vs_weekday](figure/weekend_vs_weekday-1.png) 
 
 It appears that weekends have less total steps per 5-minute time interval
 compared to weekdays and also that the activity window is shifted later by about

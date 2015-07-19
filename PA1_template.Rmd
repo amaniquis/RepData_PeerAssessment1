@@ -9,7 +9,7 @@ output:
 
 
 ## Loading and preprocessing the data
-```{r}
+```{r load_data}
 unzip("activity.zip")
 activity_data <- read.csv("activity.csv", header = T, 
                           colClasses = c("integer", "character", "integer"))
@@ -19,7 +19,7 @@ activity_data <- cbind(activity_data, Date)
 
 
 ## What is mean total number of steps taken per day?
-```{r}
+```{r mean_total_steps_per_day}
 total_steps_per_day <- aggregate(steps ~ Date, data = activity_data, sum)
 hist(total_steps_per_day$steps, xlab = "Total Steps per Day",
      main = "Histogram of Total Steps per Day")
@@ -31,7 +31,7 @@ Mean total number of steps taken per day: `r mean_steps_per_day`
 Median total number of steps taken per day: `r median_steps_per_day`
 
 ## What is the average daily activity pattern?
-```{r}
+```{r avg_daily_activity_pattern}
 mean_steps_per_interval <- aggregate(steps ~ interval, data = activity_data,
                                      mean)
 colnames(mean_steps_per_interval) <- c("interval", "mean_steps")
@@ -48,7 +48,7 @@ max_steps_interval <-
 num_na_rows <- nrow(activity_data) - sum(complete.cases(activity_data))
 ```
 Number of rows with NA values: `r num_na_rows`  
-```{r}
+```{r mean_total_steps_per_day_imputed_values}
 new_activity_data <- merge(x = activity_data, y = mean_steps_per_interval,
                            by = "interval")
 new_activity_data$steps[is.na(new_activity_data$steps)] <-
@@ -78,7 +78,7 @@ corresponding intervals, their total will add up to the mean of 10766.19 which
 now also becomes the new median since it is also the center of the data.
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r}
+```{r weekend_vs_weekday}
 day_names <- weekdays(new_activity_data$Date)
 day_names[day_names %in% c("Sunday", "Saturday")] <- "weekend"
 day_names[day_names != "weekend"] <- "weekday"
